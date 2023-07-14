@@ -113,3 +113,125 @@ function toTitleCase(str) {
 // Test your functions
 console.log(capitalizeWord("pumpkin"));
 console.log(toTitleCase("pumpkin pranced purposefully across the pond"));
+
+/* Totally Not Another FizzBuzz 
+
+Scrimba CEO Per Borgen wants you to write a program to grant special bonuses to all his employees based on their employee ID numbers! 
+
+Scrimba has 100 employees and their employee ID numbers range from 1 - 100. If the employee's ID number is: 
+
+Divisible by 3 - Vacation! 
+Divisible by 5 - $100,000 bonus! 
+Divisible by both 3 and 5 - JACKPOT! 1 Million and a Yacht!
+Not divisible by 3 or 5 - :(
+    
+Write a program to loop through all the ID numbers and print their prize. 
+Your function's output should look something like this: 
+
+1 - :(
+2 - :(
+3 - Vacation! 
+4 - :(
+5 - $100,000 bonus!
+
+Hint: Remainder operator, modulo 
+ */
+
+// SOLUTION
+
+function awardBonuses() {
+	for (let x = 1; x < 101; x++) {
+		if (!(x % 3 || x % 5)) {
+			console.log(x + " JACKPOT!");
+		} else if (!(x % 5)) {
+			console.log(x + " Bonus!");
+		} else if (!(x % 3)) {
+			console.log(x + " Vacation");
+		} else {
+			console.log(x + " :(");
+		}
+	}
+}
+
+awardBonuses();
+
+/*  Emojify!
+
+Popular services like Slack and Github allow for emoji shortscodes, meaning 
+they will detect when a word in a sentence begins and ends with a colon (:)
+and automatically replace that word with an emoji. 
+
+These shortcodes allow users to add an emoji to their messages by typing a 
+code rather than searching for an emoji from a list. 
+
+For example, typing :smile: will replace that text with 😊 
+
+*/
+
+/* 1. Write a function that checks if a lowercase word starts and 
+ends with a colon. If it does, remove the colons and
+look up the word in the emoji object. If the word is in the 
+emojis object, return the corresponding emoji.
+If it isn't, return the original word.
+
+Example input: ":party:"
+Example output: 🎉
+
+Example input: ":flower:"
+Example output: "flower"
+
+Example input: "elephant"
+Example output: "elephant"
+*/
+
+const emojis = {
+	smile: "😊",
+	angry: "😠",
+	party: "🎉",
+	heart: "💜",
+	cat: "🐱",
+	dog: "🐕",
+};
+
+// SOLUTION
+
+function emojifyWord(word) {
+	if (word.startsWith(":") && word.endsWith(":")) {
+		let emoji = word.slice(1, -1);
+
+		return emojis[emoji] ? emojis[emoji] : emoji;
+	} else {
+		return word;
+	}
+}
+
+/* 2. Write a function to find any emoji shortcodes in a phrase.
+Your function should map over each word in the phrase, emojify any word
+that begins and ends with a colon, then return the emojified phrase. 
+Feel free to use your emojify function from the previous exercise!
+
+Example input: "I :heart: my :cat:"
+Example output: "I 💜 my 🐱"
+
+Example input: "I :heart: my elephant"
+Example output: "I 💜 my elephant"
+*/
+
+// SOLUTION:
+
+function emojifyPhrase(phrase) {
+	const arr = phrase.split(" ");
+	let newArr = [];
+	for (let word of arr) {
+		newArr.push(emojifyWord(word));
+	}
+
+	return newArr.join(" ");
+}
+
+//console.log(emojifyWord(":heart:"));
+//console.log(emojifyWord(":flower:"));
+//console.log(emojifyWord("elephant"));
+
+console.log(emojifyPhrase("I :heart: my :cat:"));
+console.log(emojifyPhrase("I :heart: my :elephant:"));
