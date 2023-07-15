@@ -253,11 +253,6 @@ Example output: false
 
 */
 
-function isAnagram(str1, str2) {}
-
-console.log(isAnagram("allergy", "gallery"));
-console.log(isAnagram("treasure", "measure"));
-
 // SOLUTION
 
 function isAnagram(str1, str2) {
