@@ -462,3 +462,84 @@ function countChars(str) {
 }
 
 console.log(countChars("Mississippi"));
+
+/* Chef Mario's Recipe Book 
+Chef Mario was in the middle of writing his cookbook masterpiece
+when he spilled coffee on his keyboard! Now all his recipes have repeat
+ingredients.
+
+Help save Chef Mario's cookbook by writing a function that takes in an array 
+and returns a new array with all the duplicates removed. 
+
+Example input: ["🌈 rainbow", "🦄 unicorn", "🍭 lollipops", "🦄 unicorn", "🍭 lollipops"];
+Example output: ["🌈 rainbow", "🦄 unicorn", "🍭 lollipops"];
+*/
+
+const eggScrambleRecipe = [
+	"🥓 bacon",
+	"🥓 bacon",
+	"🍳 eggs",
+	"🫑 green peppers",
+	"🧀 cheese",
+	"🌶️ hot sauce",
+	"🥓 bacon",
+	"🥦 broccoli",
+	"🧀 cheese",
+	"🥦 broccoli",
+	"🌶️ hot sauce",
+];
+
+// Solution
+
+function removeDupesFromArray(arr) {
+	// create a new arr to hold unique items
+	// for each item in recipe arr
+	// if the item is NOT yet in the unique arr, push it in
+	// if it is in the unique arr, move on to the next item (do nothing)
+	// return the unique arr
+
+	const uniqueItems = [];
+
+	arr.forEach((item) => {
+		if (!uniqueItems.includes(item)) {
+			uniqueItems.push(item);
+		}
+	});
+	return uniqueItems;
+}
+
+console.log(removeDupesFromArray(eggScrambleRecipe));
+
+// ALT SOLUTION 1
+
+function removeDupesFromArrayAlt1(arr) {
+	// This function creates a Set from the input array (which removes duplicates because sets
+	// can only contain unique values) and then converts the Set back into an array (because the
+	// problem asks for an array output). This function will effectively remove all duplicate items from the array.
+	return [...new Set(arr)];
+}
+
+console.log(removeDupesFromArrayAlt1(eggScrambleRecipe));
+
+// ALT SOLUTION 2
+
+function removeDupesFromArrayAlt2(arr) {
+	// create a new object to keep track of duplicates
+	// use filter to loop thorugh each item in the arr
+	// for each item in arr
+	// look up the item in the lookup table
+	// if the item does NOT exist in the lookup, add it and return true
+	// return false
+
+	const trackDupes = {};
+
+	return arr.filter((item) => {
+		if (!trackDupes[item]) {
+			trackDupes[item] = true;
+			return true;
+		}
+		return false;
+	});
+}
+
+console.log(removeDupesFromArrayAlt2(eggScrambleRecipe));
