@@ -544,7 +544,6 @@ function removeDupesFromArrayAlt2(arr) {
 
 console.log(removeDupesFromArrayAlt2(eggScrambleRecipe));
 
-
 /* 
 Scrimba mascot Pumpkin has won the grand prize at an international 
 cat show. Below are Pumpkin's scores from the judges, as well as all the 
@@ -561,35 +560,90 @@ Example output: [1, 4, 5, 4, 7, 6, 4, 3, 5]
 */
 
 const kittyScores = [
-    [39, 99, 76], 89, 98, [87, 56, 90], 
-    [96, 95], 40, 78, 50, [63]
+	[39, 99, 76],
+	89,
+	98,
+	[87, 56, 90],
+	[96, 95],
+	40,
+	78,
+	50,
+	[63],
 ];
 
 const kittyPrizes = [
-    ["💰", "🐟", "🐟"], "🏆", "💐", "💵", ["💵", "🏆"],
-    ["🐟","💐", "💐"], "💵", "💵", ["🐟"], "🐟"
+	["💰", "🐟", "🐟"],
+	"🏆",
+	"💐",
+	"💵",
+	["💵", "🏆"],
+	["🐟", "💐", "💐"],
+	"💵",
+	"💵",
+	["🐟"],
+	"🐟",
 ];
 
 // SOLUTION
 
-function flatten(arr){
-    // initialize a new, empty array
-    // loop through the passed in array and check - string or array? 
-        // if the item is string, push into the new array
-        // if the item is an array, loop through it, pushing each item into the array
-    // return new array
-    
-    const newArr = [];
-    
-    arr.forEach(element => {
-        if(Array.isArray(element)){
-            element.forEach(item => newArr.push(item))
-        } else {
-            newArr.push(element);
-        }
-    });
-    return newArr;
+function flatten(arr) {
+	// initialize a new, empty array
+	// loop through the passed in array and check - string or array?
+	// if the item is string, push into the new array
+	// if the item is an array, loop through it, pushing each item into the array
+	// return new array
+
+	const newArr = [];
+
+	arr.forEach((element) => {
+		if (Array.isArray(element)) {
+			element.forEach((item) => newArr.push(item));
+		} else {
+			newArr.push(element);
+		}
+	});
+	return newArr;
 }
 
 // console.log(flatten(kittyPrizes));
 console.log(flatten(kittyScores));
+
+/*
+Alex from Scrimba wants to know how many new students have attended 
+Scrimba's weekly Town Hall event this year. 
+
+He has an array of first-time attendees for each month of the year. 
+Help him find the total number of attendees! Your function should
+take in an array and return a number representing the total number
+of new attendees. 
+
+Example input: [1,2,3]
+Example output: 6
+ */
+
+const studentCount = [50, 53, 61, 67, 60, 70, 78, 80, 80, 81, 90, 110];
+
+// SOLUTION 1
+function sumArray(arr) {
+	let sum = 0;
+
+	for (let i = 0; i < arr.length; i++) {
+		sum += arr[i];
+	}
+	return sum;
+}
+
+console.log(sumArray(studentCount));
+
+// SOLUTION 2
+
+function sumArray2(arr) {
+	// initialize a new variable to hold the sum of the arr
+	let sum = 0;
+	// loop through the studentCount arr, add each value to the sum
+	arr.forEach((item) => (sum += item));
+	// after done looping, return the sum
+	return sum;
+}
+
+console.log(sumArray2(studentCount));
