@@ -817,3 +817,37 @@ function getSaleItems(data) {
 }
 
 console.log(getSaleItems(products));
+
+import shoppingCart from "./data4.js";
+
+/*  
+Use reduce() to total the groceries. 
+Then find a method that will round the total to 2 decimal places.
+
+Example output: 73.44
+*/
+
+// SOLUTION
+function total(arr) {
+	const sum = arr.reduce(
+		(accumulator, currentValue) => accumulator + currentValue.price,
+		0
+	);
+
+	return sum.toFixed(2);
+}
+
+console.log(total(shoppingCart));
+
+// SOLUTION 2:
+
+function total2(arr) {
+	const total = arr.reduce((acc, curr) => {
+		return acc + curr.price;
+	}, 0);
+
+	return total.toFixed(2);
+}
+
+console.log(total2(shoppingCart));
+5;
