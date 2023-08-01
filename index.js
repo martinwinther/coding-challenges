@@ -404,7 +404,7 @@ Example output: "abc12"
 const password = "9338dsabbbadjdjdj2sdfdfdf282ff8fdsd888ss8cfgfg332q23";
 
 // SOLUTION
-function removeDupeChars(chars) {
+function eChars(chars) {
 	// create a new, empty string called dupesRemoved
 	let dupesRemoved = "";
 
@@ -422,7 +422,7 @@ function removeDupeChars(chars) {
 	// dupesRemoved -- it has no duplicates!
 }
 
-console.log(removeDupeChars(password));
+console.log(eChars(password));
 
 /* 
 How often do the letters in your name repeat? 
@@ -491,7 +491,7 @@ const eggScrambleRecipe = [
 
 // Solution
 
-function removeDupesFromArray(arr) {
+function esFromArray(arr) {
 	// create a new arr to hold unique items
 	// for each item in recipe arr
 	// if the item is NOT yet in the unique arr, push it in
@@ -508,22 +508,22 @@ function removeDupesFromArray(arr) {
 	return uniqueItems;
 }
 
-console.log(removeDupesFromArray(eggScrambleRecipe));
+console.log(esFromArray(eggScrambleRecipe));
 
 // ALT SOLUTION 1
 
-function removeDupesFromArrayAlt1(arr) {
+function esFromArrayAlt1(arr) {
 	// This function creates a Set from the input array (which removes duplicates because sets
 	// can only contain unique values) and then converts the Set back into an array (because the
 	// problem asks for an array output). This function will effectively remove all duplicate items from the array.
 	return [...new Set(arr)];
 }
 
-console.log(removeDupesFromArrayAlt1(eggScrambleRecipe));
+console.log(esFromArrayAlt1(eggScrambleRecipe));
 
 // ALT SOLUTION 2
 
-function removeDupesFromArrayAlt2(arr) {
+function esFromArrayAlt2(arr) {
 	// create a new object to keep track of duplicates
 	// use filter to loop thorugh each item in the arr
 	// for each item in arr
@@ -542,7 +542,7 @@ function removeDupesFromArrayAlt2(arr) {
 	});
 }
 
-console.log(removeDupesFromArrayAlt2(eggScrambleRecipe));
+console.log(esFromArrayAlt2(eggScrambleRecipe));
 
 /* 
 Scrimba mascot Pumpkin has won the grand prize at an international 
@@ -873,3 +873,98 @@ function totalSavory(arr) {
 	}, 0);
 }
 console.log(totalSavory(shoppingCart));
+
+/*
+    You're online shopping for holiday gifts, but money is tight
+    so we need to look at the cheapest items first. 
+    Use the built in sort() method to write a function that returns a new array of
+    products sorted by price, cheapest to most expensive. 
+    
+    Then log the item and the price to the console: 
+    
+    💕,0
+    🍬,0.89
+    🍫,0.99
+    🧁,0.99
+    📚,0.99
+    ... continued
+*/
+
+// SOLUTION
+
+import products from "./data6.js";
+
+function sortProducts(data) {
+	return data.sort((a, b) => a.price - b.price);
+}
+
+const listByCheapest = sortProducts(products);
+console.log(listByCheapest);
+
+/* Find All Unique Tags 
+
+As a software dev at ScrimFlix, you're working on a feature 
+to let users browse TV shows by tag. The first step is to collect all 
+the tags from our data into a new array. Then we'll need 
+to filter out the duplicate tags. 
+
+Write a function that takes in the media data and returns
+a flat array of unique tags.
+
+Expected output: 
+["supernatural", "horror", "drama",
+"fantasy", "reality", "home improvement", "comedy", "sci-fi", "adventure"]
+
+*/
+
+// SOLUTION
+
+import mediaData from "./data7.js";
+
+function getUniqueTags(data) {
+	let arr = [];
+
+	for (let i = 0; i < data.length; i++) {
+		for (let j = 0; j < data[i].tags.length; j++) {
+			if (!arr.includes(data[i].tags[j])) {
+				arr.push(data[i].tags[j]);
+			}
+		}
+	}
+	return arr;
+}
+
+console.log(getUniqueTags(mediaData));
+
+// SOLUTION 2
+
+function getUniqueTags2(data) {
+	return data
+		.map((media) => media.tags)
+		.flat()
+		.filter((tag, index, array) => array.indexOf(tag) === index);
+}
+
+console.log(getUniqueTags2(mediaData));
+
+// SOLUTION 3
+
+function getUniqueTags3(data) {
+	// use map to loop through the data and get a new array of tags
+	// flatten the tags array with .flat()
+	const tags = data.map((podcast) => podcast.tags).flat();
+	// create a new array uniqueTags to hold the unique values
+	const uniqueTags = [];
+	// loop through the tags array
+
+	tags.forEach((tag) => {
+		// is the element already in the uniqueTags arr?
+		if (!uniqueTags.includes(tag)) {
+			uniqueTags.push(tag);
+		}
+	});
+
+	return uniqueTags;
+}
+
+console.log(getUniqueTags3(mediaData));
