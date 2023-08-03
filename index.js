@@ -939,10 +939,15 @@ console.log(getUniqueTags(mediaData));
 // SOLUTION 2
 
 function getUniqueTags2(data) {
-	return data
-		.map((media) => media.tags)
-		.flat()
-		.filter((tag, index, array) => array.indexOf(tag) === index);
+	// 1. Use the `map` method to iterate through the `data` array, replacing each `media` object with its `tags` property.
+	return (
+		data
+			.map((media) => media.tags)
+			// 2. Use the `flat` method to flatten the resulting array of arrays into a single array containing all tags.
+			.flat()
+			// 3. Use the `filter` method to iterate through the tags, including only those where the first occurrence of a particular tag coincides with the current index, thus ensuring all tags in the result are unique.
+			.filter((tag, index, array) => array.indexOf(tag) === index)
+	);
 }
 
 console.log(getUniqueTags2(mediaData));
