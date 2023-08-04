@@ -921,16 +921,24 @@ Expected output:
 
 import mediaData from "./data7.js";
 
+// Defining a function named 'getUniqueTags' that takes 'data' as an argument.
 function getUniqueTags(data) {
+	// Creating an empty array called 'arr' to store unique tags.
 	let arr = [];
 
+	// Starting a loop that goes through each element in 'data' (imagine it as a big list of media items).
 	for (let i = 0; i < data.length; i++) {
+		// Starting another loop inside the first one to go through the 'tags' of each media item.
 		for (let j = 0; j < data[i].tags.length; j++) {
+			// Checking if the current tag is not already in the 'arr' array (if it's not, it's unique so far).
 			if (!arr.includes(data[i].tags[j])) {
+				// If the current tag is not in 'arr', add it to the array (it's like putting a unique sticker in a collection).
 				arr.push(data[i].tags[j]);
 			}
 		}
 	}
+
+	// After going through all the media items and their tags, return the 'arr' array containing all unique tags.
 	return arr;
 }
 
