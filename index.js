@@ -806,14 +806,24 @@ import products from "./data3.js";
 */
 
 function getSaleItems(data) {
-	return data
-		.filter((snack) => snack.type === "sweet")
-		.map((candy) => {
-			return {
-				item: candy.item,
-				price: candy.price,
-			};
-		});
+	// First, we'll use the `filter` method, which iterates through the 'data' array and keeps only the elements that match a certain condition.
+	return (
+		data
+			.filter((snack) => {
+				// In this case, the condition is that the 'type' property of the 'snack' object must be equal to "sweet".
+				// If this condition is true, the 'snack' item is included in the result of the `filter` method.
+				return snack.type === "sweet";
+			})
+			// Next, we'll use the `map` method, which takes the result of the `filter` method and transforms each element.
+			.map((candy) => {
+				// In this case, the transformation is to take each 'candy' object (which represents a sweet snack) and create a new object containing only the 'item' and 'price' properties.
+				// The result of this `map` method is an array of objects with this simplified structure.
+				return {
+					item: candy.item,
+					price: candy.price,
+				};
+			})
+	);
 }
 
 console.log(getSaleItems(products));
