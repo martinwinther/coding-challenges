@@ -220,14 +220,25 @@ Example output: "I 💜 my elephant"
 // SOLUTION:
 
 function emojifyPhrase(phrase) {
+	// 'split' method is used to divide a string into an array of substrings.
+	// Here it splits the 'phrase' into an array of words, using a space " " as a separator.
 	const arr = phrase.split(" ");
+
+	// Creating an empty array called 'newArr' to store the results of the emojifying operation.
 	let newArr = [];
+
+	// Starting a loop that goes through each word in the 'arr' array.
 	for (let word of arr) {
+		// Using the 'emojifyWord' function (which is not provided, but assumed to convert a word to its corresponding emoji) to emojify each word,
+		// and then add it to the 'newArr'.
 		newArr.push(emojifyWord(word));
 	}
 
+	// 'join' method is used to combine the elements of an array into a single string.
+	// Here it combines the emojified words back into a string, with a space " " between each word.
 	return newArr.join(" ");
 }
+// In summary, this function takes a phrase (string), splits it into words, emojifies each word (using a separate function emojifyWord), and then reassembles the words into a single string that it returns. It's like taking a sentence, converting each word into a secret code (emojis here), and then putting the sentence back together.
 
 //console.log(emojifyWord(":heart:"));
 //console.log(emojifyWord(":flower:"));
