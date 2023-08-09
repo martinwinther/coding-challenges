@@ -1,82 +1,119 @@
-**`split`**: The `split` method is used to divide a string into an array of substrings and returns the new array. It takes a separator as an argument, which specifies where to divide the string. The separator can be a string or a regular expression. If an empty string ("") is used as the separator, the string is split between each character.
+---
 
-Example: `'Hello World'.split(' ')` returns `['Hello', 'World']`.
+### Table of Contents
+- [Table of Contents](#table-of-contents)
+- [Array Methods:](#array-methods)
+- [String Methods:](#string-methods)
 
-**`reverse`**: The `reverse` method is used to reverse the order of the elements in an array. It's important to note that this method modifies the array in place.
+---
 
-Example: `['Hello', 'World'].reverse()` modifies the original array to `['World', 'Hello']`.
+### Array Methods:
 
-3. **`join`**: The `join` method is used to combine the elements of an array into a string. The elements are combined into one string and separated by a specified separator. If no separator is specified, the default is a comma (,).
+- **CRUD Operations**:
 
-   Example: `['Hello', 'World'].join(' ')` returns `'Hello World'`.
+  - **`push`**: Adds one or more elements to the end of an array.
+    _Example_: `let arr = [1, 2, 3]; arr.push(4)` results in `arr` being `[1, 2, 3, 4]`.
+  - **`pop`**: Removes the last element from an array.
+    _Example_: `let arr = [1, 2, 3]; arr.pop()` modifies `arr` to `[1, 2]`.
 
-These methods are commonly used in JavaScript to manipulate strings and arrays. They can be used together to perform complex transformations. For example, to reverse a string, you can `split` the string into an array of characters, `reverse` the array, and then `join` it back into a string:
+  - **`shift`**: Removes the first element from an array.
+    _Example_: `let arr = [1, 2, 3]; arr.shift()` results in `arr` being `[2, 3]`.
 
-```javascript
-let str = "Hello World";
-let reversedStr = str.split("").reverse().join(""); // Returns 'dlroW olleH'
-```
+  - **`unshift`**: Adds one or more elements to the beginning of an array.
+    _Example_: `let arr = [1, 2, 3]; arr.unshift(0)` results in `arr` being `[0, 1, 2, 3]`.
 
-**`filter`**: The `filter` method is used to create a new array with all elements that pass a condition (or a test) provided by a function. This function is called for each element in the array and constructs a new array including elements where the callback function returns a truthy value (in other words, a value that is considered true when evaluated in a boolean context).
+- **Iterative Methods**:
 
-Example: `[1, 2, 3, 4, 5].filter(num => num > 3)` returns `[4, 5]`. This filters out the numbers greater than 3.
+  - **`forEach`**: Executes a function for each array element.
+    _Example_: `['a', 'b', 'c'].forEach(element => console.log(element))` logs each element.
 
-**`map`**: The `map` method is used to create a new array with the results of calling a function for every element in the array. It calls the provided function once for each element in order, and constructs a new array from the results.
+  - **`map`**: Creates a new array with the results of calling a function on every element.
+    _Example_: `[1, 2, 3].map(num => num * 2)` returns `[2, 4, 6]`.
 
-Example: `[1, 2, 3, 4, 5].map(num => num * 2)` returns `[2, 4, 6, 8, 10]`. This multiplies each element in the array by 2.
+  - **`filter`**: Creates a new array with elements that pass the test provided by a function.
+    _Example_: `[1, 2, 3, 4].filter(num => num > 2)` returns `[3, 4]`.
 
-**`reduce`**: The `reduce` method applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single value. It takes two arguments: a reducer function (that you provide), which is called for each item in the array, and an optional initial value for the accumulator.
+  - **`reduce`**: Applies a function against an accumulator and each element in the array to reduce it to a single value.
+    _Example_: `[1, 2, 3].reduce((acc, val) => acc + val, 0)` returns `6`.
 
-Example: `[1, 2, 3, 4].reduce((accumulator, currentValue) => accumulator + currentValue, 0)` returns `10`. This sums up the elements of the array.
+- **Utility Methods**:
 
-**`forEach`**: The `forEach` method executes a provided function once for each array element. It's used to perform operations (or side-effects) on each item in an array. It doesn't return a new array or modify the existing array unless you do so in the callback.
+  - **`includes`**: Determines whether an array contains a certain value.
+    _Example_: `['apple', 'orange', 'banana'].includes('apple')` returns `true`.
 
-Example: `['a', 'b', 'c'].forEach(element => console.log(element))` logs each element to the console.
+  - **`some`**: Tests whether at least one element in the array passes a test function.
+    _Example_: `[1, 2, 3, 4, 5].some(num => num > 3)` returns `true`.
 
-**`push`**: The `push` method is used to add one or more elements to the end of an array, and returns the new length of the array. This is a mutable operation, as it changes the original array.
+  - **`every`**: Tests whether all elements in the array pass a test function.
+    _Example_: `[1, 2, 3, 4, 5].every(num => num > 3)` returns `false`.
 
-Example: `let arr = [1, 2, 3]; arr.push(4)` modifies `arr` to `[1, 2, 3, 4]`.
+  - **`indexOf`**: Returns the first index at which a certain element can be found.
+    _Example_: `['apple', 'orange', 'banana'].indexOf('orange')` returns `1`.
 
-**`pop`**: The `pop` method is used to remove the last element from an array and returns that element. This method changes the length of the original array.
+  - **`lastIndexOf`**: Returns the last index at which a certain element can be found, searching from the end.
+    _Example_: `['apple', 'orange', 'banana', 'apple'].lastIndexOf('apple')` returns `3`.
 
-Example: `let arr = [1, 2, 3]; arr.pop()` modifies `arr` to `[1, 2]` and returns `3`.
+  - **`isArray`**: Determines whether the passed value is an array.
+    _Example_: `Array.isArray([1, 2, 3])` returns `true`.
 
-**`shift`**: The `shift` method removes the first element from an array and returns that removed element. This method changes the length of the original array.
+  - **`from`**: Creates a new array from an array-like or iterable object.
+    _Example_: `const set = new Set(['apple', 'orange', 'banana']); Array.from(set)` returns `['apple', 'orange', 'banana']`.
 
-Example: `let arr = [1, 2, 3]; arr.shift()` modifies `arr` to `[2, 3]` and returns `1`.
+  - **`toString`**: Returns a string representing the array and its elements.
+    _Example_: `['apple', 'orange', 'banana'].toString()` returns `'apple,orange,banana'`.
 
-**`unshift`**: The `unshift` method adds one or more elements to the beginning of an array and returns the new length of the array.
+  - **`fill`**: Changes all elements in an array to a static value, from a start to an end index.
+    _Example_: `[1, 2, 3, 4, 5].fill(0, 2, 4)` returns `[1, 2, 0, 0, 5]`.
 
-Example: `let arr = [1, 2, 3]; arr.unshift(0)` modifies `arr` to `[0, 1, 2, 3]`.
+- **Sorting and Manipulation**:
 
-**`sort`**: The `sort` method is used to sort the elements of an array in place and returns the sorted array. The default sort order is based on the string Unicode code points. If you need a custom sorting order, you can provide a compare function as an argument.
+  - **`sort`**: Sorts the elements of an array in place.
+    _Example_: `const fruits = ['apple', 'banana', 'cherry']; fruits.sort()` returns `['apple', 'banana', 'cherry']`.
 
-Example:
+  - **`slice`**: Returns a shallow copy of a portion of an array.
+    _Example_: `['apple', 'orange', 'banana', 'grape'].slice(1, 3)` returns `['orange', 'banana']`.
 
-- Default Sorting: `const fruits = ['apple', 'orange', 'banana']; fruits.sort()` modifies `fruits` to `['apple', 'banana', 'orange']`.
+  - **`splice`**: Changes the contents of an array by removing, replacing, or adding elements.
+    _Example_: `let numbers
 
-- Numerical Sorting: `[10, 1, 21].sort((a, b) => a - b)` returns `[1, 10, 21]`.
+= [1, 2, 4]; numbers.splice(2, 0, 3)`results in`numbers`being`[1, 2, 3, 4]`.
 
-**`slice`**: The `slice` method returns a shallow copy of a portion of an array into a new array object. It takes two arguments: the beginning index (inclusive) and the end index (exclusive). If not specified, it will slice from the beginning or up to the end of the array.
+### String Methods:
 
-Example: `const fruits = ['apple', 'orange', 'banana', 'grape']; fruits.slice(1, 3)` returns `['orange', 'banana']`.
+- **Manipulation Methods**:
 
-**`splice`**: The `splice` method changes the contents of an array by removing, replacing, or adding elements. It's a mutable operation.
+  - **`split`**: Splits a string into an array of substrings.
+    _Example_: `'apple-orange-banana'.split('-')` returns `['apple', 'orange', 'banana']`.
 
-Example:
+  - **`join`**: Joins all elements of an array into a string.
+    _Example_: `['apple', 'orange', 'banana'].join(', ')` returns `'apple, orange, banana'`.
 
-- Removing Elements: `let numbers = [1, 2, 3, 4, 5]; numbers.splice(1, 2)` modifies `numbers` to `[1, 4, 5]` and returns the removed items `[2, 3]`.
+  - **`repeat`**: Constructs a new string which contains the specified number of copies of the original string.
+    _Example_: `'Hello'.repeat(3)` returns `'HelloHelloHello'`.
 
-- Adding Elements: `let numbers = [1, 4, 5]; numbers.splice(1, 0, 2, 3)` modifies `numbers` to `[1, 2, 3, 4, 5]`.
+- **Informational Methods**:
 
-**`concat`**: The `concat` method is used to merge two or more arrays, and it returns a new array without changing the existing arrays.
+  - **`charCodeAt`**: Returns a number indicating the Unicode value of the character at a certain index.
+    _Example_: `'A'.charCodeAt(0)` returns `65`.
 
-Example: `let arr1 = [1, 2]; let arr2 = [3, 4]; arr1.concat(arr2)` returns `[1, 2, 3, 4]`.
+  - **`indexOf`**: Returns the first index at which a certain character or substring can be found, or `-1` if it's not present.
+    _Example_: `'Hello, world!'.indexOf('world')` returns `7`.
 
-**`find`**: The `find` method returns the first element in the array that satisfies a provided testing function. If no values satisfy the testing function, `undefined` is returned.
+  - **`lastIndexOf`**: Returns the last index at which a certain character or substring can be found, searching from the end, or `-1` if it's not present.
+    _Example_: `'Hello, world! Hello again!'.lastIndexOf('Hello')` returns `13`.
 
-Example: `const numbers = [1, 2, 3, 4, 5]; numbers.find(num => num > 3)` returns `4`.
+- **Transformation Methods**:
 
-**`indexOf`**: The `indexOf` method returns the first index at which a certain element can be found in the array, or `-1` if the element is not present.
+  - **`toUpperCase`**: Converts all the alphabetic characters in a string to uppercase.
+    _Example_: `'hello'.toUpperCase()` returns `'HELLO'`.
 
-Example: `const fruits = ['apple', 'orange', 'banana']; fruits.indexOf('orange')` returns `1`.
+  - **`toLowerCase`**: Converts all the alphabetic characters in a string to lowercase.
+    _Example_: `'HELLO'.toLowerCase()` returns `'hello'`.
+
+  - **`trim`**: Removes whitespace from both ends of a string.
+    _Example_: `'  Hello, world!  '.trim()` returns `'Hello, world!'`.
+
+  - **`replace`**: Returns a new string with some or all matches of a pattern replaced by a replacement.
+    _Example_: `'Hello, world!'.replace('world', 'Mars')` returns `'Hello, Mars!'`.
+
+---
