@@ -1,6 +1,5 @@
----
-
 ### Table of Contents
+
 - [Table of Contents](#table-of-contents)
 - [Array Methods:](#array-methods)
 - [String Methods:](#string-methods)
