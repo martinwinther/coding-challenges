@@ -1002,3 +1002,133 @@ function getUniqueTags3(data) {
 }
 
 console.log(getUniqueTags3(mediaData));
+
+import podcasts from "./data8.js";
+
+/* Welcome Aboard Scrimba Airlines 
+
+Our Scrimba Airlines in-flight entertainment package 
+includes a variety of podcasts. We need to add a feature that suggests
+podcasts to our patrons based on whether a flight is short or long. 
+
+Your sort function should take two arguments: the podcast data and
+flight length. If the flight is 60 minutes or less, sort the podcast list 
+from shortest to longest. If it's anything else, sort from longest
+to shortest. 
+
+Your function shouldn't return anything. Instead log a numbered list 
+of the title and duration of 
+each podcast to the console, like this:
+
+1. Crime Fan, 150 minutes
+2. Mythical Creatures, 99 minutes
+3. Crime Crime Crime, 70 minutes
+4. Coding Corner, 55 minutes
+5. Scrimba Podcast, 50 minutes
+6. Something about Witches, 35 minutes
+
+*/
+
+// SOLUTION 1
+
+function sortByDuration(data, flightLength) {
+	if (flightLength <= 60) {
+		data.sort((a, b) => a.duration - b.duration);
+
+		for (let i = 0; i < data.length; i++) {
+			console.log(
+				i + 1 + ". " + data[i].title + ", " + data[i].duration + " minutes"
+			);
+		}
+	} else {
+		data.sort((a, b) => b.duration - a.duration);
+		for (let i = 0; i < data.length; i++) {
+			console.log(
+				i + 1 + ". " + data[i].title + ", " + data[i].duration + " minutes"
+			);
+		}
+	}
+}
+
+sortByDuration(podcasts, 30);
+
+// SOLUTION 2
+
+function sortByDuration2(data, flightLength) {
+	// Check if flight is greater than 60 minutes
+	if (flightLength > 60) {
+		// if yes, sort decending order (longest to shortest)
+		data.sort((a, b) => b.duration - a.duration);
+	} else {
+		data.sort((a, b) => a.duration - b.duration);
+	}
+	// loop through my sorted array
+	data.forEach(({ title, duration }, index) => {
+		// construct a string using the title and duration props
+		// use the index to number the list
+		// console.log each item
+		console.log(`${index + 1}. ${title}, ${duration} minutes`);
+	});
+}
+
+sortByDuration2(podcasts, 60);
+
+import postData from "./data9.js";
+
+/* Popularity Contest 
+
+Iggy the Influencer and Toby the Tiktoker are dying to know
+who's more popular on social media. 
+
+Toby's TikToks get an average of 400 likes. On average, how many
+likes do Iggy's Instagram posts get? 
+
+In data.js you'll find a list of Iggy's recent posts. 
+Use reduce() to write a function that returns the average number of likes.
+To find the average, add up the total number of likes, then divide
+by the total number of posts.
+*/
+
+// SOLUTION
+function calcAverageLikes(data) {
+	const reduced = newArr.reduce((acc, curr) => acc + curr.likes, 0);
+
+	return reduced / data.length;
+}
+
+console.log(calcAverageLikes(postData));
+
+import podcasts from "./data10.js";
+
+/* Night at the Scrimbies 
+
+It's time for the Scrimbies, a prestigious award show for podcast hosts.
+We need to assemble a list of podcast hosts so we can start handing out awards. 
+
+Write a function that takes in the podcast data and
+returns a flat array of podcast hosts. There are quite a few ways to approach
+this, but try solving the problem using reduce(). 
+
+Once you have a flat array of hosts, write a second function to randomly assign each host a prize
+from the awards array. 
+
+Example output: ["🏆 Alex Booker", "⭐ Bob Smith", "💎 Camilla Lambert" ...] 
+
+*/
+
+// SOLUTION
+const awards = ["🏆", "⭐", "💎", "🥇", "👑"];
+
+function getHosts(data) {
+	return data.reduce((acc, cur) => acc.concat(cur.hosts), []);
+}
+
+function assignAwards(data) {
+	const flattened = getHosts(data);
+	return flattened.map(
+		(object) => awards[Math.floor(Math.random() * awards.length)] + " " + object
+	);
+}
+
+console.log(getHosts(podcasts));
+console.log(assignAwards(podcasts));

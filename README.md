@@ -73,9 +73,7 @@
     _Example_: `['apple', 'orange', 'banana', 'grape'].slice(1, 3)` returns `['orange', 'banana']`.
 
   - **`splice`**: Changes the contents of an array by removing, replacing, or adding elements.
-    _Example_: `let numbers
-
-= [1, 2, 4]; numbers.splice(2, 0, 3)`results in`numbers`being`[1, 2, 3, 4]`.
+    _Example_: `let numbers = [1, 2, 4]; numbers.splice(2, 0, 3)`results in`numbers`being`[1, 2, 3, 4]`.
 
 ### String Methods:
 
