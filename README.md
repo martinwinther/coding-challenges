@@ -66,8 +66,10 @@
 
 - **Sorting and Manipulation**:
 
-  - **`sort`**: Sorts the elements of an array in place.
-    _Example_: `const fruits = ['apple', 'banana', 'cherry']; fruits.sort()` returns `['apple', 'banana', 'cherry']`.
+- **`sort`**: Sorts the elements of an array in place.
+
+  - _Example (String Sorting)_: `const fruits = ['apple', 'banana', 'cherry']; fruits.sort()` returns `['apple', 'banana', 'cherry']`.
+  - _Example (Number Sorting)_: `const numbers = [20, 3, 100]; numbers.sort((a, b) => a - b)` returns `[3, 20, 100]`.
 
   - **`slice`**: Returns a shallow copy of a portion of an array.
     _Example_: `['apple', 'orange', 'banana', 'grape'].slice(1, 3)` returns `['orange', 'banana']`.
