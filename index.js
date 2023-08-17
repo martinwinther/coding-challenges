@@ -1251,3 +1251,77 @@ console.log(
 		"hamster",
 	])
 );
+
+/*
+   Oh no, our emoji flower bed is infested with mammals, trees and leaves!
+   Without changing the API url, write a function to transform your 
+   data before it's displayed. The function should eliminate
+   everything but bugs and flowers. Use your function in the API call.  
+   
+   Hint: Be sure to console the data to see what properties can help you do this!
+
+   https://scrimba.com/learn/frontend/solution-emoji-flower-bed-coaa7429a92153fd9624e7dbe
+*/
+
+// SOLUTION
+
+const url =
+	"https://apis.scrimba.com/emojihub/api/all/category/animals-and-nature";
+const flowerBed = document.querySelector(".emoji-flower-bed");
+
+function clearTheGarden(arr) {
+	// filter by group property - "animal bug" && "plant flower"
+	return arr.filter(
+		(emoji) => emoji.group === "animal bug" || emoji.group === "plant flower"
+	);
+}
+
+fetch(url)
+	.then((response) => response.json())
+	.then((result) => clearTheGarden(result))
+	.then((data) => {
+		data.forEach((emoji) => {
+			flowerBed.innerHTML += `<li>${emoji.htmlCode}</li>`;
+		});
+	})
+	.catch((err) => console.log(err));
+
+/*
+   Let's create an emoji slot machine! Replace the hardcoded 
+   data with random fruit emojis from an emojis API. 
+   
+   - Request emoji food data from the API resource below. Log it and look at it!
+        - Write a function that takes in the data and returns a new array of only
+        fruit emoji objects
+        - Write a function to get 9 random fruits from your new array of fruit 
+        
+   - Load nine random fruits into the slot machine
+
+   https://scrimba.com/learn/frontend/challenge-emoji-slot-machine-cPPq7DtV
+*/
+
+// SOLUTION
+
+const slotMachine = document.querySelector(".emoji-slots-game");
+const food =
+	"https://apis.scrimba.com/emojihub/api/all/category/food-and-drink";
+
+function makeFruitArray(arr) {
+	return arr.filter((fruit) => fruit.group === "food fruit");
+}
+
+function getRandomFruits(arr) {
+	for (let i = 0; i < 9; i++) {
+		slotMachine.innerHTML += `<li>${
+			arr[Math.floor(Math.random() * arr.length)].htmlCode
+		}</li>`;
+	}
+}
+
+// write your fetch request here
+
+fetch(food)
+	.then((res) => res.json())
+	.then((data) => makeFruitArray(data))
+	.then((data) => getRandomFruits(data))
+	.catch((err) => console.log(err));
